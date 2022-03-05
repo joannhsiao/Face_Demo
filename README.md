@@ -20,8 +20,14 @@
 ---
 ## Run
 ### training
-- asian celeb: `./train_asianceleb.sh`
-- celeb1M: `./train_efm.sh`
+- asian celeb: 
+	```
+	./train_asianceleb.sh
+	```
+- celeb1M: 
+	```
+	./train_efm.sh
+	```
 
 ### figures
 - cosine similarity: `python draw_cos_dis_real.py epoch`
