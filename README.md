@@ -30,4 +30,7 @@
 	```
 
 ### figures
-- cosine similarity: `python draw_cos_dis_real.py epoch`
+- cosine similarity: 
+	```
+	python draw_cos_dis_real.py epoch
+	```
