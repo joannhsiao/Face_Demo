@@ -231,7 +231,7 @@ lr = 0.00024
 wd = 0.0001
 num_epoch = 100
 MARGIN = 0.2
-alpha = 0.1
+alpha = 0.5
 
 
 """ loss function, optimizer """
@@ -239,6 +239,7 @@ softmax_cross_entropy = gluon.loss.SoftmaxCrossEntropyLoss()
 triplet_loss = gluon.loss.TripletLoss(margin=MARGIN)
 net.initialize(init=init.Xavier(), ctx=devs)
 trainer = gluon.Trainer(net.collect_params(), 'sgd', {'learning_rate': lr, 'wd': 0.00001})
+net.hybridize()
 
 
 #########################
@@ -332,8 +333,11 @@ for epoch in range(num_epoch):
         epoch, train_acc / epoch_size, train_loss / epoch_size, valid_acc / (Testing_IMG_number / batch_size), 
         valid_loss / (Testing_IMG_number / batch_size), time.time()-tic), flush=True)
 
-net.export("EFM_Freq", epoch=1)
 
 """ draw the figures for the results """
 draw_figure(epoch, cnt, loss_tr, loss_te)
 draw_figure(epoch, cnt, acc_tr, acc_te, 'acc')
+
+
+""" save model and params """
+net.export("EFM_Freq", epoch=1)
