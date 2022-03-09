@@ -129,19 +129,20 @@ def Count_Img_num(Lst_Path, name):
     print("Total number of {} samples = {}".format(name, IMG_number))
     return IMG_number
 
-def draw_figure(epoch, cnt, loss_tr, loss_te, flag='loss'):
+def draw_figure(epoch, cnt, tr_result, te_result, flag='loss'):
     if flag != 'loss':
         plt.ylabel('Accuracy')
         plt.title('Accuracy of each epoch')
+        plt.ylim(0, 100)
     else:
         plt.ylabel('Loss')
         plt.title('Loss of each epoch')
+        plt.ylim(0, 1)
     plt.xlabel('epoch')
     plt.grid(True)
     plt.xlim(0, epoch)
-    plt.ylim(0, 100)
-    plt.plot(cnt, loss_tr, 'r-', label='training')
-    plt.plot(cnt, loss_te, 'b-', label='testing')
+    plt.plot(cnt, tr_result, 'r-', label='training')
+    plt.plot(cnt, te_result, 'b-', label='testing')
     plt.legend()
     if flag != 'loss':
         plt.savefig('train_acc.jpg')
@@ -231,7 +232,7 @@ lr = 0.00024
 wd = 0.0001
 num_epoch = 100
 MARGIN = 0.2
-alpha = 0.5
+alpha = 1
 
 
 """ loss function, optimizer """

@@ -14,7 +14,7 @@
 ### gluon
 - only triplet loss (MNIST): well
 - loss = id loss + 0.1 * triplet loss: not so good
-- loss = id loss + 0.5 * triplet loss: 
+- loss = id loss + 0.5 * triplet loss: seems same as 0.1
 - loss = id loss + triplet loss: 
 
 ---
